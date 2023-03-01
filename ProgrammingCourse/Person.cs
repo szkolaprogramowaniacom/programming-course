@@ -16,7 +16,7 @@ namespace ProgrammingCourse
 
     //var monica = new Person {Id=2, Name = "Monica" };
 
-    internal class Person
+    public class Person
     {
         public Person()
         {
