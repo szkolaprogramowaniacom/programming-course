@@ -1,4 +1,5 @@
-﻿using ProgrammingCourse.Errors;
+﻿using NLog;
+using ProgrammingCourse.Errors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,21 @@ using System.Threading.Tasks;
 //    Console.WriteLine($"Sth wrong: {ex.Message}");
 //}
 
+//try
+//{
+//    var id = new OrderService().GetLastOrderId();
+//}
+//catch
+//{
+//    Console.WriteLine("Can't get last order id");
+//}
+
 namespace ProgrammingCourse.Errors
 {
     internal class OrderService
     {
+        private readonly Logger logger = LogManager.GetCurrentClassLogger();
+
         public int GetLastOrderId()
         {
             try
@@ -29,7 +41,7 @@ namespace ProgrammingCourse.Errors
             }
             catch (Exception ex)
             {
-                // logger.Error(ex);
+                logger.Error(ex);
                 throw;
             }
         }
