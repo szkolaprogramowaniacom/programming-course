@@ -45,5 +45,11 @@ namespace ProgrammingCourse.Errors
                 throw;
             }
         }
+
+        public void SignOrder(int orderId, string signatureId)
+        {
+            // signing code here...
+            throw new OrderSignException("Can't sign", orderId, "INVALID");
+        }
     }
 }
