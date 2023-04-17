@@ -1,6 +1,5 @@
 ﻿
 using ProgrammingCourse;
-using ProgrammingCourse.Errors;
 
 Console.WriteLine("""
 ╔════════════════════════════════════════════════════╗
