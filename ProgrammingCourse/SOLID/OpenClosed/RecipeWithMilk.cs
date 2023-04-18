@@ -15,7 +15,6 @@ namespace ProgrammingCourse.SOLID.OpenClosed
             machine.BrewCoffee();
             machine.AddMilk(1);
             machine.Finish();
-
         }
     }
 }
