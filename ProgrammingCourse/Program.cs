@@ -17,15 +17,3 @@ Console.WriteLine("""
 ╚═════════════════════════════════════╝
 """);
 
-void ShowParams(params int[] values)
-{
-	foreach (var value in values)
-	{
-		Console.Write($"{value} ");		
-	}
-    Console.WriteLine();
-}
-
-ShowParams(new int[] { 1, 2, 3 });
-ShowParams(1, 3, 2);
-ShowParams(1, 3, 2, 5, 4, 3, 4);
