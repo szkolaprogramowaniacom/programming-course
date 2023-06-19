@@ -12,8 +12,8 @@ namespace ProgrammingCourse.Examples
         {
             string numberAsString = "12";
 
-            //int number = int.Parse(numberAsString);
-            //Console.WriteLine(number);
+            int number = int.Parse(numberAsString);
+            Console.WriteLine(number);
 
             //int number2;
             //bool success = int.TryParse(numberAsString, out number2);
