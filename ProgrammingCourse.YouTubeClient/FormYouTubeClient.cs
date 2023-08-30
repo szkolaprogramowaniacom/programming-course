@@ -1,4 +1,5 @@
 using Microsoft.VisualBasic.Devices;
+using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using VideoLibrary;
 
@@ -47,26 +48,40 @@ namespace ProgrammingCourse.YouTubeClient
             //var data = await movie.GetBytesAsync();
 
             // get data with token
-            var stream = await videoClient.StreamAsync(movie);
-            var data = await ReadStreamToByteArrayAsync(stream, cancellationToken);
-
+            using var stream = await videoClient.StreamAsync(movie);
             var destFilePath = @"C:\Projekty\SzkolaProgramowania.com\Pliki\" + movie.FullName;
-            await File.WriteAllBytesAsync(destFilePath, data, cancellationToken);
+
+            // using RAM
+            //var data = await ReadStreamToByteArrayAsync(stream, cancellationToken);
+            //await File.WriteAllBytesAsync(destFilePath, data, cancellationToken);
+
+            // write direct to file stream
+            await WriteStreamToFileAsync(stream, destFilePath, cancellationToken);
+        }
+
+        private async Task WriteStreamToFileAsync(Stream stream, string destFilePath, CancellationToken cancellationToken)
+        {
+            byte[] buffer = new byte[16 * 1024];
+            using FileStream fileStream = File.OpenWrite(destFilePath);
+            int read;
+            while ((read = await stream.ReadAsync(buffer, 0, buffer.Length, cancellationToken)) > 0)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                fileStream.Write(buffer, 0, read);
+            }
         }
 
         private async Task<byte[]> ReadStreamToByteArrayAsync(Stream stream, CancellationToken token)
         {
             byte[] buffer = new byte[16 * 1024];
-            using (MemoryStream ms = new MemoryStream())
+            using MemoryStream ms = new MemoryStream();
+            int read;
+            while ((read = await stream.ReadAsync(buffer, 0, buffer.Length, token)) > 0)
             {
-                int read;
-                while ((read = await stream.ReadAsync(buffer, 0, buffer.Length, token)) > 0)
-                {
-                    token.ThrowIfCancellationRequested();
-                    ms.Write(buffer, 0, read);
-                }
-                return ms.ToArray();
+                token.ThrowIfCancellationRequested();
+                ms.Write(buffer, 0, read);
             }
+            return ms.ToArray();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
