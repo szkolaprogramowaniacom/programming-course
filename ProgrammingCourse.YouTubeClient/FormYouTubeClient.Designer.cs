@@ -32,31 +32,34 @@
             textBoxDownload = new TextBox();
             buttonDownload = new Button();
             buttonCancel = new Button();
+            progressBarDownload = new ProgressBar();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(21, 21);
+            label1.Location = new Point(24, 28);
             label1.Name = "label1";
-            label1.Size = new Size(80, 15);
+            label1.Size = new Size(100, 20);
             label1.TabIndex = 0;
             label1.Text = "YT Movie URL";
             // 
             // textBoxDownload
             // 
             textBoxDownload.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBoxDownload.Location = new Point(21, 39);
+            textBoxDownload.Location = new Point(24, 52);
+            textBoxDownload.Margin = new Padding(3, 4, 3, 4);
             textBoxDownload.Name = "textBoxDownload";
-            textBoxDownload.Size = new Size(579, 23);
+            textBoxDownload.Size = new Size(652, 27);
             textBoxDownload.TabIndex = 1;
             // 
             // buttonDownload
             // 
             buttonDownload.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonDownload.Location = new Point(606, 39);
+            buttonDownload.Location = new Point(684, 52);
+            buttonDownload.Margin = new Padding(3, 4, 3, 4);
             buttonDownload.Name = "buttonDownload";
-            buttonDownload.Size = new Size(75, 23);
+            buttonDownload.Size = new Size(86, 31);
             buttonDownload.TabIndex = 2;
             buttonDownload.Text = "Download";
             buttonDownload.UseVisualStyleBackColor = true;
@@ -66,23 +69,34 @@
             // 
             buttonCancel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonCancel.Enabled = false;
-            buttonCancel.Location = new Point(606, 68);
+            buttonCancel.Location = new Point(684, 91);
+            buttonCancel.Margin = new Padding(3, 4, 3, 4);
             buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new Size(75, 23);
+            buttonCancel.Size = new Size(86, 31);
             buttonCancel.TabIndex = 3;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = true;
             buttonCancel.Click += buttonCancel_Click;
             // 
+            // progressBarDownload
+            // 
+            progressBarDownload.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            progressBarDownload.Location = new Point(24, 86);
+            progressBarDownload.Name = "progressBarDownload";
+            progressBarDownload.Size = new Size(652, 29);
+            progressBarDownload.TabIndex = 4;
+            // 
             // FormYouTubeClient
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(705, 110);
+            ClientSize = new Size(797, 147);
+            Controls.Add(progressBarDownload);
             Controls.Add(buttonCancel);
             Controls.Add(buttonDownload);
             Controls.Add(textBoxDownload);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormYouTubeClient";
             Text = "You Tube Client";
             ResumeLayout(false);
@@ -95,5 +109,6 @@
         private TextBox textBoxDownload;
         private Button buttonDownload;
         private Button buttonCancel;
+        private ProgressBar progressBarDownload;
     }
 }

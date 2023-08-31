@@ -19,12 +19,16 @@ namespace ProgrammingCourse.YouTubeClient
             //var url = "https://www.youtube.com/shorts/QxsNnW6W1Fk";
             try
             {
+                var progress = new Progress<DownloadStatusModel>((model) =>
+                {
+                    var value = (double)model.TotalRead / model.TotalSize * 100;
+                    progressBarDownload.Value = (int)value;
+                });
                 tokenSource = new CancellationTokenSource();
                 buttonDownload.Enabled = false;
                 textBoxDownload.Enabled = false;
                 buttonCancel.Enabled = true;
-                await DownloadFileAsync(textBoxDownload.Text, tokenSource.Token);
-                MessageBox.Show("Film downloaded");
+                await DownloadFileAsync(textBoxDownload.Text, progress, tokenSource.Token);
             }
             catch (Exception exc)
             {
@@ -36,9 +40,9 @@ namespace ProgrammingCourse.YouTubeClient
                 textBoxDownload.Enabled = true;
                 buttonCancel.Enabled = false;
             }
-        }        
+        }
 
-        private async Task DownloadFileAsync(string movieUrl, CancellationToken cancellationToken)
+        private async Task DownloadFileAsync(string movieUrl, IProgress<DownloadStatusModel> progress, CancellationToken cancellationToken)
         {
             var youtube = YouTube.Default;
             var movie = await youtube.GetVideoAsync(movieUrl);
@@ -56,18 +60,27 @@ namespace ProgrammingCourse.YouTubeClient
             //await File.WriteAllBytesAsync(destFilePath, data, cancellationToken);
 
             // write direct to file stream
-            await WriteStreamToFileAsync(stream, destFilePath, cancellationToken);
+            await WriteStreamToFileAsync(stream, destFilePath, movie.ContentLength.Value, progress, cancellationToken);
         }
 
-        private async Task WriteStreamToFileAsync(Stream stream, string destFilePath, CancellationToken cancellationToken)
+        private async Task WriteStreamToFileAsync(Stream stream, string destFilePath, long contentLength, IProgress<DownloadStatusModel> progress, CancellationToken cancellationToken)
         {
             byte[] buffer = new byte[16 * 1024];
             using FileStream fileStream = File.OpenWrite(destFilePath);
             int read;
+            long totalRead = 0;
             while ((read = await stream.ReadAsync(buffer, 0, buffer.Length, cancellationToken)) > 0)
             {
                 cancellationToken.ThrowIfCancellationRequested();
                 fileStream.Write(buffer, 0, read);
+                totalRead += read;
+
+                // send update request to GUI
+                progress.Report(new DownloadStatusModel
+                {
+                    TotalRead = totalRead,
+                    TotalSize = contentLength
+                });
             }
         }
 
