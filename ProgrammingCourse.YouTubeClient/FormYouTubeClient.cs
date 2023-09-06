@@ -2,6 +2,9 @@ using Microsoft.VisualBasic.Devices;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using VideoLibrary;
+using YoutubeExplode;
+using YoutubeExplode.Videos;
+using YoutubeExplode.Videos.Streams;
 
 namespace ProgrammingCourse.YouTubeClient
 {
@@ -28,7 +31,8 @@ namespace ProgrammingCourse.YouTubeClient
                 buttonDownload.Enabled = false;
                 textBoxDownload.Enabled = false;
                 buttonCancel.Enabled = true;
-                await DownloadFileAsync(textBoxDownload.Text, progress, tokenSource.Token);
+                //await DownloadFileAsync(textBoxDownload.Text, progress, tokenSource.Token);
+                await DownloadFileUsingExplodeAsync(textBoxDownload.Text, progress, tokenSource.Token);
             }
             catch (Exception exc)
             {
@@ -42,11 +46,31 @@ namespace ProgrammingCourse.YouTubeClient
             }
         }
 
+        private async Task DownloadFileUsingExplodeAsync(string videoUrl, IProgress<DownloadStatusModel> progress, CancellationToken token)
+        {
+            var youtube = new YoutubeClient();
+            //var videoId = VideoId.Parse(videoUrl);
+            var movie = await youtube.Videos.GetAsync(videoUrl, token);
+
+            var streamManifest = await youtube.Videos.Streams.GetManifestAsync(videoUrl);
+            var streamInfo = streamManifest.GetMuxedStreams().TryGetWithHighestVideoQuality();
+            if (streamInfo is null)
+            {
+                MessageBox.Show("This video has no muxed streams.");
+                return;
+            }
+
+            var fileName = $"{movie.Title}.{streamInfo.Container.Name}";
+            var filePath = Path.Combine(@"C:\Projekty\SzkolaProgramowania.com\Pliki\", fileName);
+
+            await youtube.Videos.Streams.DownloadAsync(streamInfo, filePath, cancellationToken: token);
+        }
+
         private async Task DownloadFileAsync(string movieUrl, IProgress<DownloadStatusModel> progress, CancellationToken cancellationToken)
         {
             var youtube = YouTube.Default;
             var movie = await youtube.GetVideoAsync(movieUrl);
-            var videoClient = new VideoClient();
+            var videoClient = new VideoLibrary.VideoClient();
 
             // get data without token
             //var data = await movie.GetBytesAsync();
