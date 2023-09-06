@@ -33,6 +33,7 @@
             buttonDownload = new Button();
             buttonCancel = new Button();
             progressBarDownload = new ProgressBar();
+            labelStatus = new Label();
             SuspendLayout();
             // 
             // label1
@@ -86,11 +87,21 @@
             progressBarDownload.Size = new Size(652, 29);
             progressBarDownload.TabIndex = 4;
             // 
+            // labelStatus
+            // 
+            labelStatus.AutoSize = true;
+            labelStatus.Location = new Point(24, 118);
+            labelStatus.Name = "labelStatus";
+            labelStatus.Size = new Size(18, 20);
+            labelStatus.TabIndex = 5;
+            labelStatus.Text = "...";
+            // 
             // FormYouTubeClient
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(797, 147);
+            Controls.Add(labelStatus);
             Controls.Add(progressBarDownload);
             Controls.Add(buttonCancel);
             Controls.Add(buttonDownload);
@@ -110,5 +121,6 @@
         private Button buttonDownload;
         private Button buttonCancel;
         private ProgressBar progressBarDownload;
+        private Label labelStatus;
     }
 }

@@ -20,18 +20,20 @@ namespace ProgrammingCourse.YouTubeClient
         private async void buttonDownload_Click(object sender, EventArgs e)
         {
             //var url = "https://www.youtube.com/shorts/QxsNnW6W1Fk";
+            //https://www.youtube.com/watch?v=ZUfVEj6msOs
             try
             {
-                var progress = new Progress<DownloadStatusModel>((model) =>
+                var progress = new Progress<double>((value) =>
                 {
-                    var value = (double)model.TotalRead / model.TotalSize * 100;
-                    progressBarDownload.Value = (int)value;
+                    //labelStatus.Text = value.ToString();
+                    progressBarDownload.Value = (int)(value * 100);
                 });
+
                 tokenSource = new CancellationTokenSource();
+                progressBarDownload.Value = 0;
                 buttonDownload.Enabled = false;
                 textBoxDownload.Enabled = false;
                 buttonCancel.Enabled = true;
-                //await DownloadFileAsync(textBoxDownload.Text, progress, tokenSource.Token);
                 await DownloadFileUsingExplodeAsync(textBoxDownload.Text, progress, tokenSource.Token);
             }
             catch (Exception exc)
@@ -42,14 +44,14 @@ namespace ProgrammingCourse.YouTubeClient
             {
                 buttonDownload.Enabled = true;
                 textBoxDownload.Enabled = true;
-                buttonCancel.Enabled = false;
+                buttonCancel.Enabled = false;                
             }
         }
 
-        private async Task DownloadFileUsingExplodeAsync(string videoUrl, IProgress<DownloadStatusModel> progress, CancellationToken token)
+        private async Task DownloadFileUsingExplodeAsync(string videoUrl, IProgress<double> progress, CancellationToken token)
         {
             var youtube = new YoutubeClient();
-            //var videoId = VideoId.Parse(videoUrl);
+            var videoId = VideoId.Parse(videoUrl);
             var movie = await youtube.Videos.GetAsync(videoUrl, token);
 
             var streamManifest = await youtube.Videos.Streams.GetManifestAsync(videoUrl);
@@ -60,10 +62,17 @@ namespace ProgrammingCourse.YouTubeClient
                 return;
             }
 
-            var fileName = $"{movie.Title}.{streamInfo.Container.Name}";
+            var fileName = $"{RemovePathIllegalChars(movie.Title)}.{streamInfo.Container.Name}";
             var filePath = Path.Combine(@"C:\Projekty\SzkolaProgramowania.com\Pliki\", fileName);
 
-            await youtube.Videos.Streams.DownloadAsync(streamInfo, filePath, cancellationToken: token);
+            await youtube.Videos.Streams.DownloadAsync(streamInfo, filePath, progress, token);
+        }
+
+        private string RemovePathIllegalChars(string title)
+        {
+            // todo
+            //return title;
+            return "safe-name-movie";
         }
 
         private async Task DownloadFileAsync(string movieUrl, IProgress<DownloadStatusModel> progress, CancellationToken cancellationToken)
