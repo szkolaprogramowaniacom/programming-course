@@ -1,6 +1,8 @@
 ﻿
 using ProgrammingCourse;
 using ProgrammingCourse.OOP;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 Console.WriteLine("""
 ╔═════════════════════════════════════╗
