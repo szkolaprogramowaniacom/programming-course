@@ -1,4 +1,5 @@
 ﻿
+using HtmlAgilityPack;
 using ProgrammingCourse;
 using ProgrammingCourse.Examples;
 using ProgrammingCourse.OOP;
