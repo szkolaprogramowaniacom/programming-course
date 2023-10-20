@@ -84,5 +84,17 @@ namespace ProgrammingCourse.Examples
             Console.WriteLine(fileNameTool
                 .CreateRandomFileNameAdvancedWithoutException("abcdefghijklmnopqrstw".ToArray(), 12, "dat"));
         }
+
+        public void ChangeExtensions()
+        {
+            var fileName = @"c:\Projects\JohnInfo.dat";
+            var fileTitle = Path.GetFileNameWithoutExtension(fileName);
+            var fileFolder = Path.GetDirectoryName(fileName);
+            var newFileName = fileTitle = Path.Combine(fileFolder, fileTitle) + ".txt";
+            Console.WriteLine(newFileName);
+
+            var newFileName2 = Path.ChangeExtension(fileName, "bak");
+            Console.WriteLine(newFileName2);
+        }
     }
 }

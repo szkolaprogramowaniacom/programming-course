@@ -1,10 +1,6 @@
 ﻿
-using HtmlAgilityPack;
 using ProgrammingCourse;
 using ProgrammingCourse.Examples;
-using ProgrammingCourse.OOP;
-using System.Globalization;
-using System.Text;
 
 Console.WriteLine("""
 ╔═════════════════════════════════════╗
