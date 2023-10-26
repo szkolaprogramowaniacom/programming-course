@@ -1,6 +1,7 @@
 ﻿
 using ProgrammingCourse;
 using ProgrammingCourse.Examples;
+using System.Text;
 
 Console.WriteLine("""
 ╔═════════════════════════════════════╗
