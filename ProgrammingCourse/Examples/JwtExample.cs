@@ -60,7 +60,7 @@ namespace ProgrammingCourse.Examples
 
         public string CreateToken(string secret, DateTime expires, IList<Claim> claims)
         {
-            var secretBytes = Encoding.ASCII.GetBytes(secret);
+            var secretBytes = Encoding.UTF8.GetBytes(secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
