@@ -48,5 +48,28 @@ namespace ProgrammingCourse.Examples
             Console.WriteLine(title);
         }
 
+        public void SplitJoinExample()
+        {
+            var items = new string[] { "John", "Ann", "Monica" };
+            var sentence = string.Join(", ", items);
+            Console.WriteLine(sentence);
+
+            var sentence2 = "This is a text";
+            var items2 = sentence2.Split(' ');
+            foreach (var item2 in items2)
+            {
+                Console.WriteLine(item2);
+            }
+
+            var csvRow = "John\t2023\t123";
+            Console.WriteLine($"CSV Row: {csvRow}");
+
+            var fields = csvRow.Split("\t");
+            foreach (var field in fields)
+            {
+                Console.WriteLine(field);
+            }
+        }
+
     }
 }
