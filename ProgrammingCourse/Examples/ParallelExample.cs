@@ -39,7 +39,7 @@ namespace ProgrammingCourse.Examples
                 }
 
                 // long operation 3s
-                Task.Delay(2000 + Random.Shared.Next(5000)).Wait();
+                Task.Delay(2000 + Random.Shared.Next(3000)).Wait();
 
                 lock (sync)
                 {
