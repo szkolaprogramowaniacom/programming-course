@@ -1,6 +1,8 @@
 ﻿
+using DocumentFormat.OpenXml.Drawing;
 using ProgrammingCourse;
 using ProgrammingCourse.Examples;
+using ProgrammingCourse.Examples.Classes;
 using System.Globalization;
 using System.Text;
 
@@ -20,3 +22,7 @@ Console.WriteLine("""
 """);
 
 
+var rtvOrder = new Order();
+rtvOrder.Size = 4;
+int size = rtvOrder.Size;
+rtvOrder.Send();
