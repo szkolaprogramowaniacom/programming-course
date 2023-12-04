@@ -16,6 +16,7 @@
         public void SetSize(int size)
         {
             this.size = size;
+
         }
 
         public void Send()
