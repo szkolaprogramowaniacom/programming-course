@@ -22,8 +22,3 @@ Console.WriteLine("""
 """);
 
 
-// abstract
-//var fileWriter = new FileWriter();
-
-var csvWriter = new CsvWriter();
-
