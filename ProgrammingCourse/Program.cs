@@ -1,5 +1,4 @@
 ﻿
-using DocumentFormat.OpenXml.Drawing;
 using ProgrammingCourse;
 using ProgrammingCourse.Examples;
 using ProgrammingCourse.Examples.Classes;
