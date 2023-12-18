@@ -31,5 +31,17 @@ namespace ProgrammingCourse.Examples
                 Console.WriteLine(item);
             }            
         }
+
+        public void FormatExample()
+        {
+            var price = 12.5234m;
+            decimal price2;
+
+            price2 = 12.323m;
+
+            Console.WriteLine($"P1: {price:0000.00} - P2: {price2:0000.00}");
+            var priceLabel = price.ToString("0.0");
+            Console.WriteLine(priceLabel);
+        }
     }
 }
