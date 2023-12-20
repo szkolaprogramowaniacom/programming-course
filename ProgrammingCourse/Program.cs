@@ -2,6 +2,7 @@
 using ProgrammingCourse;
 using ProgrammingCourse.Examples;
 using ProgrammingCourse.Examples.Classes;
+using ProgrammingCourse.Examples.WorkerExample;
 using System.Globalization;
 using System.Text;
 
@@ -19,5 +20,3 @@ Console.WriteLine("""
 ║       szkolaprogramowania.com       ║
 ╚═════════════════════════════════════╝
 """);
-
-
