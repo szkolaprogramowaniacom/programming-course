@@ -20,3 +20,4 @@ Console.WriteLine("""
 ║       szkolaprogramowania.com       ║
 ╚═════════════════════════════════════╝
 """);
+
