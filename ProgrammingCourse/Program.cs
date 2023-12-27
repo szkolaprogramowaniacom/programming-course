@@ -1,5 +1,6 @@
 ﻿
 using ProgrammingCourse;
+using ProgrammingCourse.Examples;
 using System.Text;
 
 Console.WriteLine("""
@@ -17,3 +18,7 @@ Console.WriteLine("""
 ╚═════════════════════════════════════╝
 """);
 
+var text = "This is a example text. It can be longer";
+
+var stringExample = new StringExample();
+Console.WriteLine(stringExample.GetShortString(text));

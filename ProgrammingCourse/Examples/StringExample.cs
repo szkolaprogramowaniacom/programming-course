@@ -71,5 +71,19 @@ namespace ProgrammingCourse.Examples
             }
         }
 
+        internal string GetShortString(string text, int size = 10, string appendix = "...")
+        {
+            if (text.Length > size)
+            {
+                return text[..size] + appendix;
+            }
+
+            return text;
+        }
+
+        //internal string GetShortString(string text)
+        //{
+        //    return GetShortString(text, 10, "...");
+        //}
     }
 }
