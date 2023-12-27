@@ -54,6 +54,25 @@ namespace ProgrammingCourse.Examples
         {
             return product.Category == "Phones";
         }
-        
+
+        public void ByIndexExample()
+        {
+            var names = new List<string>() { "John", "Monica", "Ann" };
+
+            if (names.Count > 0)
+            {
+                var indexOfLast = names.Count - 1; // 2 -1
+                Console.WriteLine($"Last: {names[indexOfLast]}");
+                Console.WriteLine($"Last: {names[names.Count - 1]}");
+                Console.WriteLine($"Last: {names[^1]}");
+                var last = names.Last();
+                Console.WriteLine(last);
+            }
+            else
+            {
+                Console.WriteLine("Collection empty!");
+            }
+        }
+
     }
 }
