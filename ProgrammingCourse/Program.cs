@@ -1,6 +1,8 @@
 ﻿
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using ProgrammingCourse;
 using ProgrammingCourse.Examples;
+using System.Numerics;
 using System.Text;
 
 Console.WriteLine("""
@@ -18,7 +20,3 @@ Console.WriteLine("""
 ╚═════════════════════════════════════╝
 """);
 
-var text = "This is a example text. It can be longer";
-
-var stringExample = new StringExample();
-Console.WriteLine(stringExample.GetShortString(text));
