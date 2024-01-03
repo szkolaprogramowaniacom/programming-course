@@ -1,8 +1,6 @@
 ﻿
-using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using ProgrammingCourse;
 using ProgrammingCourse.Examples;
-using System.Numerics;
 using System.Text;
 
 Console.WriteLine("""
@@ -19,4 +17,3 @@ Console.WriteLine("""
 ║       szkolaprogramowania.com       ║
 ╚═════════════════════════════════════╝
 """);
-
