@@ -85,5 +85,24 @@ namespace ProgrammingCourse.Examples
         //{
         //    return GetShortString(text, 10, "...");
         //}
+
+        public void SearchExample()
+        {
+            string text = "This is a text. is";
+            if (text.Contains("is"))
+            {
+                Console.WriteLine("FOUND");
+            }
+            else
+            {
+                Console.WriteLine("NOT FOUND");
+            }
+
+            var position = text.IndexOf("is");
+            Console.WriteLine($"is position: {position}");
+
+            var lastPosition = text.LastIndexOf("is");
+            Console.WriteLine($"is position: {lastPosition}");
+        }
     }
 }
