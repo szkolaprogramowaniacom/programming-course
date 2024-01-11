@@ -1,4 +1,6 @@
-﻿namespace ProgrammingCourse.Examples
+﻿using System.Diagnostics;
+
+namespace ProgrammingCourse.Examples
 {
     internal class AsyncExample
     {
@@ -143,6 +145,32 @@
             }
 
             Console.WriteLine("Finished");
+        }
+
+        public async void WhenAnyExample()
+        {
+            var page1Url = "https://en.wikipedia.org/wiki/Pablo_Picasso";
+            var page2Url = "https://en.wikipedia.org/wiki/Spanish_Civil_War";
+            var page3Url = "https://en.wikipedia.org/wiki/Spanish_Republican_Armed_Forces";
+
+            var watch = new Stopwatch();
+            watch.Start();
+
+            var page1Task = GetPageAsync(page1Url);
+            var page2Task = GetPageAsync(page2Url);
+            var page3Task = GetPageAsync(page3Url);
+
+            await Task.WhenAll(page1Task, page2Task, page3Task);
+
+            watch.Stop();
+            Console.WriteLine(watch.Elapsed);
+        }
+
+        public async Task<string> GetPageAsync(string url)
+        {
+            using var http = new HttpClient();
+            http.BaseAddress = new Uri(url);
+            return await http.GetStringAsync("");
         }
     }
 }
