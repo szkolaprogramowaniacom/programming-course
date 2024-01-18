@@ -1,6 +1,7 @@
 ﻿
 using ProgrammingCourse;
 using ProgrammingCourse.Examples;
+using ProgrammingCourse.Examples.LINQ;
 using System.Text;
 
 Console.WriteLine("""
@@ -17,4 +18,5 @@ Console.WriteLine("""
 ║       szkolaprogramowania.com       ║
 ╚═════════════════════════════════════╝
 """);
+
 

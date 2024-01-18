@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgrammingCourse.Desktop",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgrammingCourse.YouTubeClient", "ProgrammingCourse.YouTubeClient\ProgrammingCourse.YouTubeClient.csproj", "{F6269EFC-A217-47FD-AA1C-4A02D29DBD73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomDrawing", "CustomDrawing\CustomDrawing.csproj", "{1829B031-396B-43E5-81D3-935670E92485}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomDrawing", "CustomDrawing\CustomDrawing.csproj", "{1829B031-396B-43E5-81D3-935670E92485}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
