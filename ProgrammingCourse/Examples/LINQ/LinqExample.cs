@@ -8,6 +8,9 @@ namespace ProgrammingCourse.Examples.LINQ
 {
     internal class LinqExample
     {
+        record Child(string Name);
+        record Parent(string Name, List<Child> Children);
+
         public void SelectAndOrderByExample()
         {
             var users = new List<User>
@@ -47,6 +50,36 @@ namespace ProgrammingCourse.Examples.LINQ
                 {
                     Console.WriteLine($" - {word}");
                 }
+            }
+        }
+
+        public void SelectManyExample()
+        {
+            var parents = new List<Parent>{
+            new("John Smith", new List<Child>{
+                new("Ann Smith"),
+                new("Monica Smith"),
+                new("Adam Smith"),
+            }),
+            new("Monica Kowalsky", new List<Child>
+            {
+                new("Peter Kowalsky"),
+                new("John Kowalsky"),
+            })
+        };
+
+            // without SelectMany
+            //foreach (var parent in parents)
+            //{
+            //    foreach (var child in parent.Children)
+            //    {
+            //        Console.WriteLine(child.Name);
+            //    }
+            //}
+
+            foreach (var child in parents.SelectMany(parent => parent.Children))
+            {
+                Console.WriteLine(child.Name);
             }
         }
     }
