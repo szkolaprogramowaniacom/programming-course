@@ -82,5 +82,27 @@ namespace ProgrammingCourse.Examples.LINQ
                 Console.WriteLine(child.Name);
             }
         }
+
+        record Dog(string Name);
+        record Cat(string Name);
+
+        internal void OfTypeExample()
+        {
+            var animals = new List<object>
+            {
+                new Dog("Dog1"),
+                new Cat("Cat1"),
+                new Cat("Cat2"),
+                new Cat("Cat3"),
+                new Dog("Dog2"),
+                new Dog("Dog3"),
+            };
+
+            var subanimal = animals.OfType<Cat>();
+            foreach (var animal in subanimal)
+            {
+                Console.WriteLine(animal);
+            }
+        }
     }
 }

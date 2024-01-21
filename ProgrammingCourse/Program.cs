@@ -19,4 +19,4 @@ Console.WriteLine("""
 ╚═════════════════════════════════════╝
 """);
 
-
+new LinqExample().OfTypeExample();
