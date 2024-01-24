@@ -104,5 +104,48 @@ namespace ProgrammingCourse.Examples.LINQ
                 Console.WriteLine(animal);
             }
         }
+
+        public void WhereExample()
+        {
+            var numbers = new List<int> { 11, 2, 23, 4, 15, 6 };
+            var greater = numbers.Where(n => n > 10).ToList();
+            var even = numbers.Where(n => n % 2 == 0).ToList();
+
+            foreach (var number in greater.OrderBy(x => x))
+            {
+                Console.WriteLine(number);
+            }
+        }
+
+        public void FirstExample()
+        {
+            var users = new List<UserDto> {
+                new(){ Name = "John" },
+                new(){ Name = "Peter" },
+                new(){ Name = "Robert" },
+            };
+
+            //var first = users.First();
+            var firstWithE = users.FirstOrDefault(u => u.Name.ToLower().Contains('e'));
+            if (firstWithE == null)
+            {
+                Console.WriteLine("Not found");
+            }
+            else
+            {
+                Console.WriteLine(firstWithE);
+            }
+        }
+
+        public void AnyAllExample()
+        {
+            var numbers = new List<int> { 2, 3, 7, 2, 0, 6, 8, 4, 7, 3 };
+
+            var isZero = numbers.Any(x => x == 0);
+            Console.WriteLine($"Is Zero: {isZero}");
+
+            var noZero = numbers.All(x => x != 0);
+            Console.WriteLine($"No Zero: {noZero}");
+        }
     }
 }

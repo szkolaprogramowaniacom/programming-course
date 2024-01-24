@@ -1,8 +1,4 @@
-﻿
-using ProgrammingCourse;
-using ProgrammingCourse.Examples;
-using ProgrammingCourse.Examples.LINQ;
-using System.Text;
+﻿using ProgrammingCourse.Examples.LINQ;
 
 Console.WriteLine("""
 ╔═════════════════════════════════════╗
@@ -19,4 +15,3 @@ Console.WriteLine("""
 ╚═════════════════════════════════════╝
 """);
 
-new LinqExample().OfTypeExample();
