@@ -147,5 +147,24 @@ namespace ProgrammingCourse.Examples.LINQ
             var noZero = numbers.All(x => x != 0);
             Console.WriteLine($"No Zero: {noZero}");
         }
+
+        public void SkipTakeExample()
+        {
+            var numbers = new List<int> { 2, 3, 7, 2, 0, 6, 8, 4, 7, 3 };
+            //var first3 = numbers.Skip(4).Take(2);
+
+            //foreach (var number in first3)
+            //{
+            //    Console.WriteLine(number);
+            //}
+
+            var pageSize = 2;
+            var pageCount = numbers.Count / pageSize;
+            for (var pageIndex = 0; pageIndex < pageCount; pageIndex++)
+            {
+                var pageItems = numbers.Skip(pageIndex * pageSize).Take(pageSize);
+                Console.WriteLine($"Page: {pageIndex} => {string.Join(',', pageItems)}");
+            }
+        }
     }
 }
