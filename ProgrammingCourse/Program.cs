@@ -1,4 +1,6 @@
 ﻿using ProgrammingCourse.Examples.LINQ;
+using System.Security.Cryptography.X509Certificates;
+
 
 Console.WriteLine("""
 ╔═════════════════════════════════════╗
@@ -14,4 +16,5 @@ Console.WriteLine("""
 ║       szkolaprogramowania.com       ║
 ╚═════════════════════════════════════╝
 """);
+
 

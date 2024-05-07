@@ -166,5 +166,29 @@ namespace ProgrammingCourse.Examples.LINQ
                 Console.WriteLine($"Page: {pageIndex} => {string.Join(',', pageItems)}");
             }
         }
+
+        public void ToDictionaryExample()
+        {
+            var students = new List<Student>
+            {
+                new Student { Pesel = "30082054903", Name = "Alice" },
+                new Student { Pesel = "36020627617", Name = "Bob" },
+                new Student { Pesel = "21030718077", Name = "Chad" }
+            };
+
+            var studentArray = students.ToArray();
+
+            var studentDictionary = students.ToDictionary(s => s.Pesel, s => s);
+
+            var key = "36020627617";
+            if (studentDictionary.ContainsKey(key))
+            {
+                Console.WriteLine(studentDictionary[key].Name);
+            }
+            else
+            {
+                Console.WriteLine("Not Found");
+            }
+        }
     }
 }
