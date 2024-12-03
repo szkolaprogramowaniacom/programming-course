@@ -1,6 +1,4 @@
-﻿using ProgrammingCourse.Examples.LINQ;
-
-
+﻿
 Console.WriteLine("""
 ╔═════════════════════════════════════╗
 ║ .-.     .-.                         ║   
