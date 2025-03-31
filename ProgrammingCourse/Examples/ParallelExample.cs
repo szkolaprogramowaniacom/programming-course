@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +48,47 @@ namespace ProgrammingCourse.Examples
                     Console.Write($"DONE");
                 }
             }            
+        }
+
+        public void ParalelForEach()
+        {
+            var clipPath = @"C:\Projekty\SzkolaProgramowania.com\Pliki\Clips";
+
+            var clips = new List<string>{
+                "clip1.mkv",
+                "clip2.mkv",
+                "clip3.mkv"
+            };
+
+            // process clips here
+            //foreach (var clip in clips)
+            //{
+            //    ConvertClip(clip);
+            //}
+            Parallel.ForEach(clips, ConvertClip);
+
+            //Parallel.ForEach(clips, clip => { 
+            //    // code here
+            //});
+
+            void ConvertClip(string fileName)
+            {
+                Console.WriteLine($"Converting {fileName}...");
+
+                var process = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        // ffmpeg.exe -i clip1.mkv -ac 1 converted_clip1.mkv
+                        FileName = "ffmpeg.exe",
+                        Arguments = $"-i {fileName} -ac 1 converted_{fileName}",
+                        UseShellExecute = false,
+                        WorkingDirectory = clipPath,
+                    }
+                };
+                process.Start();
+                process.WaitForExit();
+            }
         }
     }
 }

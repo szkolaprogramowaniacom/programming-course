@@ -29,5 +29,20 @@ namespace ProgrammingCourse.Examples
                 Console.WriteLine("WRONG");
             }
         }
+
+        private void Example()
+        {
+            int x = 10;
+            Console.WriteLine(x);
+
+            // += -= *= /=
+            x += 5; // x = x + 5;
+            x -= 5; // x = x - 5;
+            x *= 5; // x = x * 5;
+            x /= 5; // x = x / 5;
+
+            int v, y, z;
+            v = y = z = 4; // bardzo nietypowe
+        }
     }
 }

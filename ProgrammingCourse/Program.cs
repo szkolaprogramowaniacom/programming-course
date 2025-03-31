@@ -3,14 +3,14 @@ Console.WriteLine("""
 ╔═════════════════════════════════════╗
 ║ .-.     .-.                         ║   
 ║ |M|   .-|P|---.                     ║
-║ |S|---| |Y|===|  LEARN HOW TO TALK  ║
-║ |.|   |J|T| C |     TO MACHINES     ║
-║ |N| C |A|H|===|                     ║
-║ |E| + |V|O| # |  .NET Programming   ║
+║ |S|---| |Y|===|    HOW TO  LEARN    ║
+║ |.|   |J|T| C |     PROGRAMMING     ║
+║ |N| C |A|H|===|        .NET         ║
+║ |E| + |V|O| # |                     ║
 ║ |T| + |A|N|===|                     ║
 ║ |_|___|_|_|___|                     ║
 ╠═════════════════════════════════════╣
-║       szkolaprogramowania.com       ║
+║      HowToLearnProgramming.net      ║
 ╚═════════════════════════════════════╝
 """);
 
